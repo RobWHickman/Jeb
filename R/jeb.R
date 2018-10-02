@@ -49,7 +49,7 @@ jeb <- function(image = "default",
       #if matching object is not an sf object, try to coerce
       if(all(class(admin_shape) != "sf")) {
         message("coercing object to sf")
-        admin_shape <- st_as_sf(asmin_shape)
+        admin_shape <- st_as_sf(admin_shape)
       }
 
       #use a supplied name if wanted for the final plot
