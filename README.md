@@ -33,6 +33,8 @@ jeb_meme <- jeb(country = "France", level = 2)
 plot(jeb_meme)
 ```
 
+![Jeb_France_Meme](man/figure/readme_fig.png)
+
 n.b. the USA shapefile on GADM is both large and contains islands which stretch past the date line so doesn't actually work that well with the GADM setting.
 
 If you want to use your own overlay picture or shapefiles you can do. The image argument can take a path to a .png file to read and plot as a raster. By setting lookup to anything other than "GADM", the function will look in the environment for anything object specified in the country argument. It will then attempt to coerce this to an sf object and plot it.
