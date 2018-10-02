@@ -4,19 +4,21 @@
 \alias{jeb}
 \title{Jeb}
 \usage{
-jeb(image = "default", lookup = "GADM", shape_code = "USA",
-  level = 1, bg_col = "goldenrod")
+jeb(image = "default", lookup = "GADM", country = "USA", level = 1,
+  bg_col = "goldenrod", name = NULL)
 }
 \arguments{
 \item{image}{The image to overlay. Default to Jeb! Bush celebrating, otherwise, a file path to (preferably) a .png file}
 
 \item{lookup}{The method used to find the shapefile to use as the electoral background. Defaults to GADM}
 
-\item{shape_code}{The GADM code for the country shapefiles to download from GADM. Requires GADM to be the lookup method}
+\item{country}{The GADM code for the country shapefiles to download from GADM. If not using GADM, searches the environment for a matching object}
+
+\item{level}{The GADM level for the country shapefiles to download from GADM. Requires GADM to be the lookup method}
 
 \item{bg_col}{The background fill colour for the electoral shapefiles. Defaults to a Goldenrod shape.}
 
-\item{geocode}{The GADM level for the country shapefiles to download from GADM. Requires GADM to be the lookup method}
+\item{name}{The name for the country on the final plot title. If using GADM, will find this from the NAME_0 column of the downloaded shape}
 }
 \description{
 Produce an election victory map overlaid with a picture (e.g. of Jeb! Bush)
