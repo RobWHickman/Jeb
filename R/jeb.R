@@ -81,7 +81,7 @@ jeb <- function(image = "default",
 
   #plot the electoral map
   map <- ggplot2::ggplot() +
-    ggplot2::geom_sf(data = admin_shape, aes(fill = fill)) +
+    ggplot2::geom_sf(data = admin_shape, aes(fill = fill), colour = "white") +
     ggplot2::scale_fill_manual(values = bg_col, name = NULL) +
     ggplot2::ggtitle(paste(name, "Election Results")) +
     ggthemes::theme_map() +
