@@ -1,13 +1,12 @@
 Package: Jeb
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Create Stupid Simple Jeb! Election Meme Plots Using Ggplot2
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Robert Hickman
+Maintainer: Robert Hickman <robwhickman@gmail.com>
+Description: Create plots of a map of shapefiles coloured in dark yellow overlayed with a picture of Jeb Bush in the style of 
+    the Jeb wins! memes (https://knowyourmeme.com/memes/jeb-wins). Parameters- e.g. country, image, colour can all be altered.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0.9000
-
