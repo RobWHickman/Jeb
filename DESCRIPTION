@@ -21,5 +21,6 @@ Imports:
 Suggests:
     rmapshaper,
     png,
-    countrycodes
+    countrycodes,
+    ggthemes
 

@@ -49,7 +49,7 @@ jeb <- function(image = "default",
       #if matching object is not an sf object, try to coerce
       if(all(class(admin_shape) != "sf")) {
         message("coercing object to sf")
-        admin_shape <- st_as_sf(admin_shape)
+        admin_shape <- sf::st_as_sf(admin_shape)
       }
 
       #use a supplied name if wanted for the final plot
@@ -60,11 +60,11 @@ jeb <- function(image = "default",
   #if size is larger than ~10mb try to simplify it with rmapshaper's ms_simplify
   if(object.size(admin_shape) > 10000000) {
     warning("large object size of map- attempting to simplify!")
-    admin_shape <- ms_simplify(admin_shape)
+    admin_shape <- rmapshaper::ms_simplify(admin_shape)
   }
 
   #get the bounding box of the admin shapefile
-  admin_bbox <- st_bbox(admin_shape) * c(0.995, 0.995, 1.005, 1.005)
+  admin_bbox <- sf::st_bbox(admin_shape) * c(0.995, 0.995, 1.005, 1.005)
   #set the fill column
   admin_shape$fill <- "Jeb!"
 
@@ -78,17 +78,17 @@ jeb <- function(image = "default",
   }
 
   #plot the electoral map
-  map <- ggplot() +
-    geom_sf(data = admin_shape, aes(fill = fill)) +
-    scale_fill_manual(values = bg_col, name = NULL) +
-    ggtitle(paste(name, "Election Results")) +
+  map <- ggplot2::ggplot() +
+    ggplot2::geom_sf(data = admin_shape, aes(fill = fill)) +
+    ggplot2::scale_fill_manual(values = bg_col, name = NULL) +
+    ggplot2::ggtitle(paste(name, "Election Results")) +
     ggthemes::theme_map() +
-    theme(plot.title = element_text(size=50)) +
-    theme(legend.position = "right",
+    ggplot2::theme(plot.title = element_text(size=50)) +
+    ggplot2::theme(legend.position = "right",
           legend.text = element_text(size = 15)) +
-    guides(fill = guide_legend(override.aes = list(size = 15))) +
+    ggplot2::guides(fill = guide_legend(override.aes = list(size = 15))) +
     #add the image as a raster
-    annotation_raster(as.raster(overlay), admin_bbox[1], admin_bbox[3], admin_bbox[2], admin_bbox[4])
+    ggplot2::annotation_raster(as.raster(overlay), admin_bbox[1], admin_bbox[3], admin_bbox[2], admin_bbox[4])
 
   return(map)
 }
