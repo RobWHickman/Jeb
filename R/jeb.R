@@ -85,7 +85,7 @@ jeb <- function(image = "default",
     ggplot2::scale_fill_manual(values = bg_col, name = NULL) +
     ggplot2::ggtitle(paste(name, "Election Results")) +
     ggthemes::theme_map() +
-    ggplot2::theme(plot.title = element_text(size=50)) +
+    ggplot2::theme(plot.title = element_text(size=35)) +
     ggplot2::theme(legend.position = "right",
           legend.text = element_text(size = 15)) +
     ggplot2::guides(fill = guide_legend(override.aes = list(size = 15))) +
