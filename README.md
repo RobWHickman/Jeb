@@ -1,7 +1,7 @@
 
 # Jeb! <img src = "man/figure/HexSticker.png" align = "right" width = "200"/>
 
-##Jeb wins meme plots in R
+## Jeb wins meme plots in R
 
 This package is a small thing I threw together last summer to create plots of the [Jeb wins meme](https://knowyourmeme.com/memes/jeb-wins). The package is pretty self-explanatory. Just playing arouynd with it should be easiest.
 
@@ -13,7 +13,7 @@ To install this package
 devtools::install_github("robwhickman/Jeb")
 ```
 
-##Use
+## Use
 
 The sole function ```jeb()``` produces a ggplot2 object of a map with a raster annotation over it. To produce the map it uses the [simple features package](https://github.com/r-spatial/sf) and ```geom_sf()``` from the recent ggplot2 package.
 

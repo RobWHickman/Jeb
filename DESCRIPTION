@@ -6,7 +6,20 @@ Author: Robert Hickman
 Maintainer: Robert Hickman <robwhickman@gmail.com>
 Description: Create plots of a map of shapefiles coloured in dark yellow overlayed with a picture of Jeb Bush in the style of 
     the Jeb wins! memes (https://knowyourmeme.com/memes/jeb-wins). Parameters- e.g. country, image, colour can all be altered.
+URL: https://github.com/RobWHickman/Jeb
+BugReports: https://github.com/RobWHickman/Jeb/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0.9000
+VignetteBuilder: knitr
+Imports:
+    stats,
+    utils,
+    ggplot2,
+    sf
+Suggests:
+    rmapshaper,
+    png,
+    countrycodes
+
