@@ -17,10 +17,9 @@ Imports:
     stats,
     utils,
     ggplot2,
-    sf
-Suggests:
+    sf,
     rmapshaper,
     png,
-    countrycodes,
+    countrycode,
     ggthemes
 

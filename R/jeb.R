@@ -68,9 +68,11 @@ jeb <- function(image = "default",
   #set the fill column
   admin_shape$fill <- "Jeb!"
 
-  #get the overlay image
+  #get the overlay image from the github repo
   if(image == "default") {
-    overlay <- readPNG("./man/figure/JEB.png")
+    temp_dir <- tempdir()
+    download.file("https://raw.githubusercontent.com/RobWHickman/Jeb/master/man/figure/JEB.png", destfile = file.path(temp_dir, "jeb.png"), mode = "wb")
+    overlay <- readPNG(file.path(temp_dir, "jeb.png"))
   } else {
     #search a defined path for an image to overlay
     message("finding overlay image")
