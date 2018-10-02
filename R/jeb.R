@@ -14,6 +14,7 @@
 #' @importFrom rmapshaper ms_simplify
 #' @importFrom ggthemes theme_map
 #' @importFrom png readPNG
+#' @importFrom countrycode countrycode
 #' @export
 jeb <- function(image = "default",
                 lookup = "GADM",
@@ -21,6 +22,12 @@ jeb <- function(image = "default",
                 level = 1,
                 bg_col = "goldenrod",
                 name = NULL) {
+
+  #if a full country name is given, attempt to find iso3c code
+  if(nchar(country) > 3) {
+    message("attempting to find matching country iso3c code")
+    country <- countrycode(country, 'country.name', 'iso3c')
+  }
 
   #get the electoral shape files
   if(lookup == "GADM") {
