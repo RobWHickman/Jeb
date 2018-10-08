@@ -22,4 +22,5 @@ Imports:
     png,
     countrycode,
     ggthemes
-
+Suggests:
+    knitr
