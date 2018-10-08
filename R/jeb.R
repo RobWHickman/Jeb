@@ -17,7 +17,7 @@
 #' @importFrom countrycode countrycode
 #' @export
 jeb <- function(image = "default",
-                lookup = "GADM",
+                lookup = "GADM3",
                 country = "USA",
                 level = 1,
                 bg_col = "goldenrod",
@@ -30,13 +30,18 @@ jeb <- function(image = "default",
   }
 
   #get the electoral shape files
-  if(lookup == "GADM") {
+  if(grepl("GADM", lookup)) {
     #download a matching country shapefile from GADM and open it
-    admin_url <- paste0("https://biogeo.ucdavis.edu/data/gadm3.6/Rsf/gadm36_", paste0(country, "_", level, "_sf.rds"))
+    if(lookup == "GADM2") {
+      admin_url <- paste0("https://biogeo.ucdavis.edu/data/gadm2.8/rds/", paste0(country, "_adm", level, ".rds"))
+    } else if(lookup == "GADM3") {
+      admin_url <- paste0("https://biogeo.ucdavis.edu/data/gadm3.6/Rsf/gadm36_", paste0(country, "_", level, "_sf.rds"))
+    }
+
     temp_dir <- tempdir()
     download.file(admin_url, destfile = file.path(temp_dir, "shapefiles.rds"), mode = "wb")
 
-    admin_shape <- readRDS(file.path(temp_dir, "shapefiles.rds"))
+    admin_shape <- sf::st_as_sf(readRDS(file.path(temp_dir, "shapefiles.rds")))
 
     #get the full name of the country from the NAME_0 column of the sf data.frame
     name <- unique(admin_shape$NAME_0)

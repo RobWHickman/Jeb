@@ -19,13 +19,7 @@ The sole function ```jeb()``` produces a ggplot2 object of a map with a raster a
 
 To get the shapefiles for this map, it by default searches GADM (using a defined country iso3c code and level number). If a fuller name is given for the country, it will attempt to find the iso3c code using the ```countrycode()``` function from the package of the same name. For levels, 0 is the country as a whole and generally you won't want/be able to go higher than 2.
 
-To install the package use
-
-```{r}
-devtools::install_github("robwhickman/Jeb")
-```
-
-then we can use it to create a meme using (e.g.)
+To create a plot use the jeb() function e.g.
 
 ```{r}
 jeb_meme <- jeb(country = "France", level = 2)
