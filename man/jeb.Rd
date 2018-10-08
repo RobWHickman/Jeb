@@ -4,8 +4,8 @@
 \alias{jeb}
 \title{Jeb}
 \usage{
-jeb(image = "default", lookup = "GADM", country = "USA", level = 1,
-  bg_col = "goldenrod", name = NULL)
+jeb(image = "default", lookup = "GADM3", country = "USA",
+  level = 1, bg_col = "goldenrod", name = NULL)
 }
 \arguments{
 \item{image}{The image to overlay. Default to Jeb! Bush celebrating, otherwise, a file path to (preferably) a .png file}
@@ -27,5 +27,8 @@ Produce an election victory map overlaid with a picture (e.g. of Jeb! Bush)
 Generates a plot of an image over an electoral map. E.g. quickly and easily allows for Jeb! meme style maps to be generated
 }
 \examples{
+plot <- Jeb::jeb(image = "default",
+ lookup = "GADM3", country = "Sweden", level = 2,
+  bg_col = "Goldenrod", name = "Swedish Federal")
 
 }

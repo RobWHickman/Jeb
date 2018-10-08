@@ -9,12 +9,18 @@
 #' @details Generates a plot of an image over an electoral map. E.g. quickly and easily allows for Jeb! meme style maps to be generated
 
 #' @examples
+#' plot <- Jeb::jeb(image = "default",
+#'  lookup = "GADM3", country = "Sweden", level = 2,
+#'   bg_col = "Goldenrod", name = "Swedish Federal")
 #'
 #' @import ggplot2
 #' @importFrom rmapshaper ms_simplify
 #' @importFrom ggthemes theme_map
 #' @importFrom png readPNG
 #' @importFrom countrycode countrycode
+#' @importFrom utils download.file
+#' @importFrom utils object.size
+#' @importFrom grDevices as.raster
 #' @export
 jeb <- function(image = "default",
                 lookup = "GADM3",
@@ -36,6 +42,8 @@ jeb <- function(image = "default",
       admin_url <- paste0("https://biogeo.ucdavis.edu/data/gadm2.8/rds/", paste0(country, "_adm", level, ".rds"))
     } else if(lookup == "GADM3") {
       admin_url <- paste0("https://biogeo.ucdavis.edu/data/gadm3.6/Rsf/gadm36_", paste0(country, "_", level, "_sf.rds"))
+    } else {
+      warning("Did you specify either GADM2 or GADM3 as lookup?")
     }
 
     temp_dir <- tempdir()
@@ -44,7 +52,9 @@ jeb <- function(image = "default",
     admin_shape <- sf::st_as_sf(readRDS(file.path(temp_dir, "shapefiles.rds")))
 
     #get the full name of the country from the NAME_0 column of the sf data.frame
-    name <- unique(admin_shape$NAME_0)
+    if(is.null(name)) {
+      name <- unique(admin_shape$NAME_0)
+    }
 
     #otherwise search the environment for a matching object to use as a shapefile
     } else {
